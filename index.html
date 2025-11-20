@@ -36,6 +36,62 @@
         h1 {
             font-size: 1.5rem;
             font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .toggle-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .toggle-label.active {
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #2ed4b5;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.reverse::before {
+            transform: translateX(30px);
+        }
+
+        .view-content {
+            display: none;
+        }
+
+        .view-content.active {
+            display: block;
         }
 
         .mapping-table {
@@ -106,6 +162,15 @@
             letter-spacing: 0.5px;
         }
 
+        .subsection-header {
+            background: #1f316a;
+            color: white;
+            padding: 6px 15px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding-left: 25px;
+        }
+
         .legend {
             padding: 15px 25px;
             background: linear-gradient(135deg, #2ed4b5 0%, #1fa89a 100%);
@@ -150,6 +215,9 @@
             .mapping-table tbody tr:hover {
                 background: white;
             }
+            .toggle-container {
+                display: none;
+            }
         }
 
         @media (max-width: 768px) {
@@ -174,187 +242,571 @@
     <div class="container">
         <header>
             <h1>🧭 ActivTrak Navigation Quick Reference</h1>
+            <div class="toggle-container">
+                <span class="toggle-label active" id="legacyLabel">Legacy → New</span>
+                <div class="toggle-switch" id="toggleSwitch"></div>
+                <span class="toggle-label" id="newLabel">New → Legacy</span>
+            </div>
         </header>
 
-        <table class="mapping-table">
-            <thead>
-                <tr>
-                    <th style="width: 38%;">Legacy Navigation</th>
-                    <th style="width: 5%;"></th>
-                    <th style="width: 57%;">New Navigation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="section-header">
-                    <td colspan="3">📊 EXECUTIVE & INSIGHTS</td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Financial Loss</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Organization Insights <span class="new-section">Executive Summaries</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Executive Summary</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Workforce Utilization <span class="new-section">Executive Summaries</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Technology Usage</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Technology Utilization <span class="new-section">Executive Summaries</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Team Comparison</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Team Comparison <span class="new-section">Executive Summaries</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Impact</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Impact Analysis <span class="new-section">Executive Summaries</span></td>
-                </tr>
+        <!-- Legacy to New View -->
+        <div id="legacyToNew" class="view-content active">
+            <table class="mapping-table">
+                <thead>
+                    <tr>
+                        <th style="width: 38%;">Legacy Navigation</th>
+                        <th style="width: 5%;"></th>
+                        <th style="width: 57%;">New Navigation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="section-header">
+                        <td colspan="3">📊 HOME & FAVORITES</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Home</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Home</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Favorites</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Favorites</td>
+                    </tr>
 
-                <tr class="section-header">
-                    <td colspan="3">👥 WORKFORCE & PRODUCTIVITY TRACKING</td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Team Pulse</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Real-time Visibility <span class="new-section">Workforce Management</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Top Users and Groups</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Productivity by User <span class="new-section">Workforce Management</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Productivity</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Productivity Trends <span class="new-section">Workforce Management</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Working Hours</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Daily Work Metrics <span class="new-section">Workforce Management</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Schedule Adherence (Live Reports)</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Schedule Adherence <span class="new-section">Workforce Management</span></td>
-                </tr>
+                    <tr class="section-header">
+                        <td colspan="3">📈 INSIGHTS (Legacy Menu)</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Financial Loss</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Organization Insights <span class="new-section">Executive Summaries</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Executive Summary</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Workforce Utilization <span class="new-section">Executive Summaries</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Team Comparison</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Team Comparison <span class="new-section">Executive Summaries</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Location Insights</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Productivity by Location <span class="new-section">Productivity Optimization</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Activity Breakdown</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Productivity Achievement <span class="new-section">Productivity Optimization</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Schedule Performance</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Schedule Adherence Trends <span class="new-section">Productivity Optimization</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Activity Alignment</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Activity Alignment <span class="new-section">Productivity Optimization</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Work Efficiency</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Focus & Collaboration <span class="new-section">Productivity Optimization</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Workload Balance</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Workload Balance <span class="new-section">Productivity Optimization</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Technology Usage</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Technology Utilization <span class="new-section">Executive Summaries</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Benchmarks & Goals</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Benchmarks & Goals <span class="new-section">Productivity Optimization</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Personal Insights</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Personal Insights <span class="new-section">Productivity Optimization</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Subscriptions</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Subscriptions <span class="new-section">Notifications</span></td>
+                    </tr>
 
-                <tr class="section-header">
-                    <td colspan="3">💻 TECHNOLOGY USAGE</td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Top Websites</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Website Usage <span class="new-section">Technology & AI Usage</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Top Applications</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Application Usage <span class="new-section">Technology & AI Usage</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Top Categories</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Category Usage <span class="new-section">Technology & AI Usage</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Activity Log</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Activity Log <span class="new-section">Technology & AI Usage</span></td>
-                </tr>
+                    <tr class="section-header">
+                        <td colspan="3">👥 TEAM PULSE</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Team Pulse</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Real-time Visibility <span class="new-section">Workforce Management</span></td>
+                    </tr>
 
-                <tr class="section-header">
-                    <td colspan="3">📈 PRODUCTIVITY OPTIMIZATION</td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Coach</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Coaching Opportunities <span class="new-section">Productivity Optimization</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Activity Breakdown</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Productivity Achievement <span class="new-section">Productivity Optimization</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Schedule Performance</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Schedule Adherence Trends <span class="new-section">Productivity Optimization</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Activity Alignment</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Activity Alignment <span class="new-section">Productivity Optimization</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Location Insights</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Productivity by Location <span class="new-section">Productivity Optimization</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Workload Balance</comfortd>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Workload Balance <span class="new-section">Productivity Optimization</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Work Efficiency</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Focus & Collaboration <span class="new-section">Productivity Optimization</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Benchmarks & Goals</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Benchmarks & Goals <span class="new-section">Productivity Optimization</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Personal Insights</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Personal Insights <span class="new-section">Productivity Optimization</span></td>
-                </tr>
+                    <tr class="section-header">
+                        <td colspan="3">💼 COACH</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Coach</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Coaching Opportunities <span class="new-section">Productivity Optimization</span></td>
+                    </tr>
 
-                <tr class="section-header">
-                    <td colspan="3">🔔 NOTIFICATIONS & ALARMS</td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Alarms (Risk Level, Log, Config)</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Compliance Alarms <span class="new-section">Notifications</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Screenshots</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Compliance Alarms (Screenshots) <span class="new-section">Notifications</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Alarm Webhooks</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Alarm Webhooks <span class="new-section">Notifications</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Subscriptions</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Subscriptions <span class="new-section">Notifications</span></td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">Weekly Digest</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">Weekly Digest <span class="new-section">Notifications</span></td>
-                </tr>
+                    <tr class="section-header">
+                        <td colspan="3">💼 IMPACT</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Impact</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Impact Analysis <span class="new-section">Executive Summaries</span></td>
+                    </tr>
 
-                <tr class="section-header">
-                    <td colspan="3">🔗 INTEGRATIONS</td>
-                </tr>
-                <tr>
-                    <td class="legacy-item">API & Integrations</td>
-                    <td class="arrow">→</td>
-                    <td class="new-item">APIs & Integrations <span class="new-section">Main Menu</span></td>
-                </tr>
-            </tbody>
-        </table>
+                    <tr class="section-header">
+                        <td colspan="3">📋 LIVE REPORTS (Legacy Menu)</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Top Users and Groups</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Productivity by User <span class="new-section">Workforce Management</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Productivity</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Productivity Trends <span class="new-section">Workforce Management</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Working Hours</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Daily Work Metrics <span class="new-section">Workforce Management</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Schedule Adherence</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Schedule Adherence <span class="new-section">Workforce Management</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Top Websites</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Website Usage <span class="new-section">Technology & AI Usage</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Top Applications</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Application Usage <span class="new-section">Technology & AI Usage</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Top Categories</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Category Usage <span class="new-section">Technology & AI Usage</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Activity Log</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Activity Log <span class="new-section">Technology & AI Usage</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">🔗 API & INTEGRATIONS</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">API & Integrations</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">APIs & Integrations <span class="new-section">Main Menu</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">📡 SIGNALS</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Signals</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Productivity Signals <span class="new-section">Notifications</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">🔔 ALARMS (Legacy Menu)</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Risk Level</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Alarm Analysis <span class="new-section">Compliance Alarms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Alarm Log</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Alarm Log <span class="new-section">Compliance Alarms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Configuration</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Alarm Configuration <span class="new-section">Compliance Alarms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Screenshots</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Last Screenshot / Screenshot History <span class="new-section">Compliance Alarms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Alarm Webhooks</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Alarm Webhooks <span class="new-section">Compliance Alarms</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">⚙️ SETTINGS</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Settings</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Settings</td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">🔔 LATEST UPDATES & HELP</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Latest Updates</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Latest Updates</td>
+                    </tr>
+                    <tr>
+                        <td class="legacy-item">Help</td>
+                        <td class="arrow">→</td>
+                        <td class="new-item">Help</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- New to Legacy View -->
+        <div id="newToLegacy" class="view-content">
+            <table class="mapping-table">
+                <thead>
+                    <tr>
+                        <th style="width: 38%;">New Navigation</th>
+                        <th style="width: 5%;"></th>
+                        <th style="width: 57%;">Legacy Navigation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="section-header">
+                        <td colspan="3">📊 HOME & FAVORITES</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Home</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Home</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Favorites</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Favorites</td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">📑 EXECUTIVE SUMMARIES</td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Workforce Utilization</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Workforce Utilization</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Executive Summary <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Technology Utilization</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Technology Utilization</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Technology Usage <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Organization Insights</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Organization Insights</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Financial Loss <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Team Comparison</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Team Comparison</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Team Comparison <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Impact Analysis</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Impact Analysis</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Impact <span class="new-section">Main Menu</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">👥 WORKFORCE MANAGEMENT</td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Real-time Visibility</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Real-time Visibility</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Team Pulse <span class="new-section">Main Menu</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Productivity by User</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Productivity by User</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Top Users and Groups <span class="new-section">Live Reports</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Productivity Trends</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Productivity Trends</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Productivity <span class="new-section">Live Reports</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Daily Work Metrics</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Daily Work Metrics</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Working Hours <span class="new-section">Live Reports</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Schedule Adherence</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Schedule Adherence</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Schedule Adherence <span class="new-section">Live Reports</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">💻 TECHNOLOGY & AI USAGE</td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Website Usage</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Website Usage</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Top Websites <span class="new-section">Live Reports</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Application Usage</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Application Usage</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Top Applications <span class="new-section">Live Reports</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Category Usage</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Category Usage</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Top Categories <span class="new-section">Live Reports</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Activity Log</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Activity Log</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Activity Log <span class="new-section">Live Reports</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">📈 PRODUCTIVITY OPTIMIZATION</td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Coaching Opportunities</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Coaching Opportunities</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Coach <span class="new-section">Main Menu</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Productivity Achievement</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Productivity Achievement</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Activity Breakdown <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Schedule Adherence Trends</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Schedule Adherence Trends</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Schedule Performance <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Activity Alignment</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Activity Alignment</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Activity Alignment <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Productivity by Location</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Productivity by Location</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Location Insights <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Workload Balance</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Workload Balance</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Workload Balance <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Focus & Collaboration</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Focus & Collaboration</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Work Efficiency <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Benchmarks & Goals</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Benchmarks & Goals</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Benchmarks & Goals <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Personal Insights</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Personal Insights</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Personal Insights <span class="new-section">Insights</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">🔔 NOTIFICATIONS</td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Productivity Signals</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Productivity Signals</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Signals <span class="new-section">Main Menu</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Compliance Alarms</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Alarm Analysis</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Risk Level <span class="new-section">Alarms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Alarm Log</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Alarm Log <span class="new-section">Alarms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Alarm Configuration</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Configuration <span class="new-section">Alarms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Alarm Webhooks</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Alarm Webhooks <span class="new-section">Alarms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Last Screenshot</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Screenshots <span class="new-section">Alarms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Screenshot History</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Screenshots <span class="new-section">Alarms</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Subscriptions</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Subscriptions</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Subscriptions <span class="new-section">Insights</span></td>
+                    </tr>
+                    <tr class="subsection-header">
+                        <td colspan="3">Weekly Digest</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Weekly Digest</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Weekly Digest <span class="new-section">Access</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">🔗 APIs & INTEGRATIONS</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">APIs & Integrations</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">API & Integrations <span class="new-section">Main Menu</span></td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">⚙️ SETTINGS</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Settings</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Settings</td>
+                    </tr>
+
+                    <tr class="section-header">
+                        <td colspan="3">🔔 LATEST UPDATES & HELP</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Latest Updates</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Latest Updates</td>
+                    </tr>
+                    <tr>
+                        <td class="new-item">Help</td>
+                        <td class="arrow">←</td>
+                        <td class="legacy-item">Help</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div class="legend">
             <div class="legend-item">
@@ -363,13 +815,40 @@
             </div>
             <div class="legend-item">
                 <div class="legend-color new-color"></div>
-                <span>New Navigation Location</span>
+                <span>New Navigation</span>
             </div>
             <div class="legend-item">
-                <span class="new-section">Section Badge</span>
-                <span>= New menu section</span>
+                <span class="new-section">Badge</span>
+                <span>= Original menu location</span>
             </div>
         </div>
     </div>
+
+    <script>
+        const toggleSwitch = document.getElementById('toggleSwitch');
+        const legacyLabel = document.getElementById('legacyLabel');
+        const newLabel = document.getElementById('newLabel');
+        const legacyToNew = document.getElementById('legacyToNew');
+        const newToLegacy = document.getElementById('newToLegacy');
+        let isReversed = false;
+
+        toggleSwitch.addEventListener('click', function() {
+            isReversed = !isReversed;
+            toggleSwitch.classList.toggle('reverse');
+            
+            // Update label active states
+            legacyLabel.classList.toggle('active');
+            newLabel.classList.toggle('active');
+
+            // Toggle view visibility
+            if (isReversed) {
+                legacyToNew.classList.remove('active');
+                newToLegacy.classList.add('active');
+            } else {
+                legacyToNew.classList.add('active');
+                newToLegacy.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
