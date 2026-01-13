@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ActivTrak Navigation Quick Reference</title>
-    <style>
+    <style type="text/css">
         * {
             margin: 0;
             padding: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
             background: #f8fafc;
             min-height: 100vh;
         }
@@ -165,8 +165,7 @@
             transition: background 0.3s;
         }
 
-        .toggle-switch::before {
-            content: '';
+        .toggle-switch-knob {
             position: absolute;
             width: 24px;
             height: 24px;
@@ -178,7 +177,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        .toggle-switch.reverse::before {
+        .toggle-switch.reverse .toggle-switch-knob {
             transform: translateX(30px);
         }
 
@@ -197,8 +196,6 @@
 
         .mapping-table thead {
             background: #f1f5f9;
-            position: sticky;
-            top: 0;
         }
 
         .mapping-table th {
@@ -248,7 +245,7 @@
             margin-left: 8px;
         }
 
-        .section-header {
+        .section-header td {
             background: #14233f;
             color: white;
             padding: 8px 15px;
@@ -256,11 +253,6 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-        }
-
-        .section-header td {
-            background: #14233f;
-            color: white;
         }
 
         .legend {
@@ -273,6 +265,7 @@
             align-items: center;
             font-size: 0.8rem;
             color: white;
+            flex-wrap: wrap;
         }
 
         .legend-item {
@@ -291,6 +284,7 @@
             background: #1f316a;
             border: 1px solid white;
         }
+
         .new-color { 
             background: #14233f;
             border: 1px solid white;
@@ -328,91 +322,90 @@
 </head>
 <body>
     <div class="page-wrapper">
-        <!-- Left Panel - Legacy Navigation -->
         <div class="side-panel">
             <div class="side-panel-header">Legacy Navigation</div>
             <div class="side-panel-content">
                 <div class="nav-preview">
                     <div class="nav-preview-logo">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#2ed4b5"/>
-                            <path d="M2 17l10 5 10-5" stroke="#1f9c89" stroke-width="2"/>
-                            <path d="M2 12l10 5 10-5" stroke="#2ed4b5" stroke-width="2"/>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#2ed4b5"></path>
+                            <path d="M2 17l10 5 10-5" stroke="#1f9c89" stroke-width="2"></path>
+                            <path d="M2 12l10 5 10-5" stroke="#2ed4b5" stroke-width="2"></path>
                         </svg>
                         <span>Activ<span class="trak">Trak</span></span>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>
                         Home
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
                         Favorites
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="3" rx="1"/><rect x="3" y="11" width="18" height="3" rx="1"/><rect x="3" y="16" width="18" height="3" rx="1"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="6" width="18" height="3" rx="1"></rect><rect x="3" y="11" width="18" height="3" rx="1"></rect><rect x="3" y="16" width="18" height="3" rx="1"></rect></svg>
                         Team Pulse
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 3.13a4 4 0 010 7.75"/><path d="M21 21v-2a4 4 0 00-3-3.85"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="7" r="4"></circle><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"></path></svg>
                         Coach
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
                         Insights
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
                         Impact
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M7 7h10M7 12h10M7 17h6"></path></svg>
                         Live Reports
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>
                         API & Integrations
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"></path></svg>
                         Alarms
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
                         Settings
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>
                         Latest Updates
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>
                         Help
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Main Content -->
         <div class="main-content">
             <div class="container">
                 <header>
-                    <h1>🧭 ActivTrak Navigation Quick Reference</h1>
+                    <h1>ActivTrak Navigation Quick Reference</h1>
                     <div class="toggle-container">
-                        <span class="toggle-label active" id="legacyLabel">Legacy → New</span>
-                        <div class="toggle-switch" id="toggleSwitch"></div>
-                        <span class="toggle-label" id="newLabel">New → Legacy</span>
+                        <span class="toggle-label active" id="legacyLabel">Legacy to New</span>
+                        <div class="toggle-switch" id="toggleSwitch">
+                            <div class="toggle-switch-knob"></div>
+                        </div>
+                        <span class="toggle-label" id="newLabel">New to Legacy</span>
                     </div>
                 </header>
 
-                <!-- Legacy to New View -->
                 <div id="legacyToNew" class="view-content active">
                     <table class="mapping-table">
                         <thead>
@@ -423,10 +416,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="section-header"><td colspan="3">📊 HOME & FAVORITES</td></tr>
+                            <tr class="section-header"><td colspan="3">HOME AND FAVORITES</td></tr>
                             <tr><td class="legacy-item">Home</td><td class="arrow">→</td><td class="new-item">Home</td></tr>
                             <tr><td class="legacy-item">Favorites</td><td class="arrow">→</td><td class="new-item">Favorites</td></tr>
-                            <tr class="section-header"><td colspan="3">📈 INSIGHTS (Legacy Menu)</td></tr>
+                            <tr class="section-header"><td colspan="3">INSIGHTS (Legacy Menu)</td></tr>
                             <tr><td class="legacy-item">Financial Loss</td><td class="arrow">→</td><td class="new-item">Organization Insights <span class="new-section">Executive Summaries</span></td></tr>
                             <tr><td class="legacy-item">Executive Summary</td><td class="arrow">→</td><td class="new-item">Workforce Utilization <span class="new-section">Executive Summaries</span></td></tr>
                             <tr><td class="legacy-item">Team Comparison</td><td class="arrow">→</td><td class="new-item">Team Comparison <span class="new-section">Executive Summaries</span></td></tr>
@@ -434,47 +427,46 @@
                             <tr><td class="legacy-item">Activity Breakdown</td><td class="arrow">→</td><td class="new-item">Productivity Achievement <span class="new-section">Productivity Optimization</span></td></tr>
                             <tr><td class="legacy-item">Schedule Performance</td><td class="arrow">→</td><td class="new-item">Schedule Adherence Trends <span class="new-section">Productivity Optimization</span></td></tr>
                             <tr><td class="legacy-item">Activity Alignment</td><td class="arrow">→</td><td class="new-item">Activity Alignment <span class="new-section">Productivity Optimization</span></td></tr>
-                            <tr><td class="legacy-item">Work Efficiency</td><td class="arrow">→</td><td class="new-item">Focus & Collaboration <span class="new-section">Productivity Optimization</span></td></tr>
+                            <tr><td class="legacy-item">Work Efficiency</td><td class="arrow">→</td><td class="new-item">Focus and Collaboration <span class="new-section">Productivity Optimization</span></td></tr>
                             <tr><td class="legacy-item">Workload Balance</td><td class="arrow">→</td><td class="new-item">Workload Balance <span class="new-section">Productivity Optimization</span></td></tr>
                             <tr><td class="legacy-item">Technology Usage</td><td class="arrow">→</td><td class="new-item">Technology Utilization <span class="new-section">Executive Summaries</span></td></tr>
-                            <tr><td class="legacy-item">Benchmarks & Goals</td><td class="arrow">→</td><td class="new-item">Benchmarks & Goals <span class="new-section">Productivity Optimization</span></td></tr>
+                            <tr><td class="legacy-item">Benchmarks and Goals</td><td class="arrow">→</td><td class="new-item">Benchmarks and Goals <span class="new-section">Productivity Optimization</span></td></tr>
                             <tr><td class="legacy-item">Personal Insights</td><td class="arrow">→</td><td class="new-item">Personal Insights <span class="new-section">Productivity Optimization</span></td></tr>
                             <tr><td class="legacy-item">Subscriptions</td><td class="arrow">→</td><td class="new-item">Subscriptions <span class="new-section">Notifications</span></td></tr>
-                            <tr class="section-header"><td colspan="3">👥 TEAM PULSE</td></tr>
+                            <tr class="section-header"><td colspan="3">TEAM PULSE</td></tr>
                             <tr><td class="legacy-item">Team Pulse</td><td class="arrow">→</td><td class="new-item">Real-time Visibility <span class="new-section">Workforce Management</span></td></tr>
-                            <tr class="section-header"><td colspan="3">💼 COACH</td></tr>
+                            <tr class="section-header"><td colspan="3">COACH</td></tr>
                             <tr><td class="legacy-item">Coach</td><td class="arrow">→</td><td class="new-item">Coaching Opportunities <span class="new-section">Productivity Optimization</span></td></tr>
-                            <tr class="section-header"><td colspan="3">💼 IMPACT</td></tr>
+                            <tr class="section-header"><td colspan="3">IMPACT</td></tr>
                             <tr><td class="legacy-item">Impact</td><td class="arrow">→</td><td class="new-item">Impact Analysis <span class="new-section">Executive Summaries</span></td></tr>
-                            <tr class="section-header"><td colspan="3">📋 LIVE REPORTS (Legacy Menu)</td></tr>
+                            <tr class="section-header"><td colspan="3">LIVE REPORTS (Legacy Menu)</td></tr>
                             <tr><td class="legacy-item">Top Users and Groups</td><td class="arrow">→</td><td class="new-item">Productivity by User <span class="new-section">Workforce Management</span></td></tr>
                             <tr><td class="legacy-item">Productivity</td><td class="arrow">→</td><td class="new-item">Productivity Trends <span class="new-section">Workforce Management</span></td></tr>
                             <tr><td class="legacy-item">Working Hours</td><td class="arrow">→</td><td class="new-item">Daily Work Metrics <span class="new-section">Workforce Management</span></td></tr>
                             <tr><td class="legacy-item">Schedule Adherence</td><td class="arrow">→</td><td class="new-item">Schedule Adherence <span class="new-section">Workforce Management</span></td></tr>
-                            <tr><td class="legacy-item">Top Websites</td><td class="arrow">→</td><td class="new-item">Website Usage <span class="new-section">Technology & AI Usage</span></td></tr>
-                            <tr><td class="legacy-item">Top Applications</td><td class="arrow">→</td><td class="new-item">Application Usage <span class="new-section">Technology & AI Usage</span></td></tr>
-                            <tr><td class="legacy-item">Top Categories</td><td class="arrow">→</td><td class="new-item">Category Usage <span class="new-section">Technology & AI Usage</span></td></tr>
-                            <tr><td class="legacy-item">Activity Log</td><td class="arrow">→</td><td class="new-item">Activity Log <span class="new-section">Technology & AI Usage</span></td></tr>
-                            <tr class="section-header"><td colspan="3">🔗 API & INTEGRATIONS</td></tr>
-                            <tr><td class="legacy-item">API & Integrations</td><td class="arrow">→</td><td class="new-item">APIs & Integrations <span class="new-section">Main Menu</span></td></tr>
-                            <tr class="section-header"><td colspan="3">📡 SIGNALS</td></tr>
+                            <tr><td class="legacy-item">Top Websites</td><td class="arrow">→</td><td class="new-item">Website Usage <span class="new-section">Technology and AI Usage</span></td></tr>
+                            <tr><td class="legacy-item">Top Applications</td><td class="arrow">→</td><td class="new-item">Application Usage <span class="new-section">Technology and AI Usage</span></td></tr>
+                            <tr><td class="legacy-item">Top Categories</td><td class="arrow">→</td><td class="new-item">Category Usage <span class="new-section">Technology and AI Usage</span></td></tr>
+                            <tr><td class="legacy-item">Activity Log</td><td class="arrow">→</td><td class="new-item">Activity Log <span class="new-section">Technology and AI Usage</span></td></tr>
+                            <tr class="section-header"><td colspan="3">API AND INTEGRATIONS</td></tr>
+                            <tr><td class="legacy-item">API and Integrations</td><td class="arrow">→</td><td class="new-item">APIs and Integrations <span class="new-section">Main Menu</span></td></tr>
+                            <tr class="section-header"><td colspan="3">SIGNALS</td></tr>
                             <tr><td class="legacy-item">Signals</td><td class="arrow">→</td><td class="new-item">Productivity Signals <span class="new-section">Notifications</span></td></tr>
-                            <tr class="section-header"><td colspan="3">🔔 ALARMS (Legacy Menu)</td></tr>
+                            <tr class="section-header"><td colspan="3">ALARMS (Legacy Menu)</td></tr>
                             <tr><td class="legacy-item">Risk Level</td><td class="arrow">→</td><td class="new-item">Alarm Analysis <span class="new-section">Compliance Alarms</span></td></tr>
                             <tr><td class="legacy-item">Alarm Log</td><td class="arrow">→</td><td class="new-item">Alarm Log <span class="new-section">Compliance Alarms</span></td></tr>
                             <tr><td class="legacy-item">Configuration</td><td class="arrow">→</td><td class="new-item">Alarm Configuration <span class="new-section">Compliance Alarms</span></td></tr>
                             <tr><td class="legacy-item">Screenshots</td><td class="arrow">→</td><td class="new-item">Last Screenshot / Screenshot History <span class="new-section">Compliance Alarms</span></td></tr>
                             <tr><td class="legacy-item">Alarm Webhooks</td><td class="arrow">→</td><td class="new-item">Alarm Webhooks <span class="new-section">Compliance Alarms</span></td></tr>
-                            <tr class="section-header"><td colspan="3">⚙️ SETTINGS</td></tr>
+                            <tr class="section-header"><td colspan="3">SETTINGS</td></tr>
                             <tr><td class="legacy-item">Settings</td><td class="arrow">→</td><td class="new-item">Settings</td></tr>
-                            <tr class="section-header"><td colspan="3">🔔 LATEST UPDATES & HELP</td></tr>
+                            <tr class="section-header"><td colspan="3">LATEST UPDATES AND HELP</td></tr>
                             <tr><td class="legacy-item">Latest Updates</td><td class="arrow">→</td><td class="new-item">Latest Updates</td></tr>
                             <tr><td class="legacy-item">Help</td><td class="arrow">→</td><td class="new-item">Help</td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- New to Legacy View -->
                 <div id="newToLegacy" class="view-content">
                     <table class="mapping-table">
                         <thead>
@@ -485,37 +477,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="section-header"><td colspan="3">📊 HOME & FAVORITES</td></tr>
+                            <tr class="section-header"><td colspan="3">HOME AND FAVORITES</td></tr>
                             <tr><td class="new-item">Home</td><td class="arrow">←</td><td class="legacy-item">Home</td></tr>
                             <tr><td class="new-item">Favorites</td><td class="arrow">←</td><td class="legacy-item">Favorites</td></tr>
-                            <tr class="section-header"><td colspan="3">📑 EXECUTIVE SUMMARIES</td></tr>
+                            <tr class="section-header"><td colspan="3">EXECUTIVE SUMMARIES</td></tr>
                             <tr><td class="new-item">Workforce Utilization</td><td class="arrow">←</td><td class="legacy-item">Executive Summary <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Technology Utilization</td><td class="arrow">←</td><td class="legacy-item">Technology Usage <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Organization Insights</td><td class="arrow">←</td><td class="legacy-item">Financial Loss <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Team Comparison</td><td class="arrow">←</td><td class="legacy-item">Team Comparison <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Impact Analysis</td><td class="arrow">←</td><td class="legacy-item">Impact <span class="new-section">Main Menu</span></td></tr>
-                            <tr class="section-header"><td colspan="3">👥 WORKFORCE MANAGEMENT</td></tr>
+                            <tr class="section-header"><td colspan="3">WORKFORCE MANAGEMENT</td></tr>
                             <tr><td class="new-item">Real-time Visibility</td><td class="arrow">←</td><td class="legacy-item">Team Pulse <span class="new-section">Main Menu</span></td></tr>
                             <tr><td class="new-item">Productivity by User</td><td class="arrow">←</td><td class="legacy-item">Top Users and Groups <span class="new-section">Live Reports</span></td></tr>
                             <tr><td class="new-item">Productivity Trends</td><td class="arrow">←</td><td class="legacy-item">Productivity <span class="new-section">Live Reports</span></td></tr>
                             <tr><td class="new-item">Daily Work Metrics</td><td class="arrow">←</td><td class="legacy-item">Working Hours <span class="new-section">Live Reports</span></td></tr>
                             <tr><td class="new-item">Schedule Adherence</td><td class="arrow">←</td><td class="legacy-item">Schedule Adherence <span class="new-section">Live Reports</span></td></tr>
-                            <tr class="section-header"><td colspan="3">💻 TECHNOLOGY & AI USAGE</td></tr>
+                            <tr class="section-header"><td colspan="3">TECHNOLOGY AND AI USAGE</td></tr>
                             <tr><td class="new-item">Website Usage</td><td class="arrow">←</td><td class="legacy-item">Top Websites <span class="new-section">Live Reports</span></td></tr>
                             <tr><td class="new-item">Application Usage</td><td class="arrow">←</td><td class="legacy-item">Top Applications <span class="new-section">Live Reports</span></td></tr>
                             <tr><td class="new-item">Category Usage</td><td class="arrow">←</td><td class="legacy-item">Top Categories <span class="new-section">Live Reports</span></td></tr>
                             <tr><td class="new-item">Activity Log</td><td class="arrow">←</td><td class="legacy-item">Activity Log <span class="new-section">Live Reports</span></td></tr>
-                            <tr class="section-header"><td colspan="3">📈 PRODUCTIVITY OPTIMIZATION</td></tr>
+                            <tr class="section-header"><td colspan="3">PRODUCTIVITY OPTIMIZATION</td></tr>
                             <tr><td class="new-item">Coaching Opportunities</td><td class="arrow">←</td><td class="legacy-item">Coach <span class="new-section">Main Menu</span></td></tr>
                             <tr><td class="new-item">Productivity Achievement</td><td class="arrow">←</td><td class="legacy-item">Activity Breakdown <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Schedule Adherence Trends</td><td class="arrow">←</td><td class="legacy-item">Schedule Performance <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Activity Alignment</td><td class="arrow">←</td><td class="legacy-item">Activity Alignment <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Productivity by Location</td><td class="arrow">←</td><td class="legacy-item">Location Insights <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Workload Balance</td><td class="arrow">←</td><td class="legacy-item">Workload Balance <span class="new-section">Insights</span></td></tr>
-                            <tr><td class="new-item">Focus & Collaboration</td><td class="arrow">←</td><td class="legacy-item">Work Efficiency <span class="new-section">Insights</span></td></tr>
-                            <tr><td class="new-item">Benchmarks & Goals</td><td class="arrow">←</td><td class="legacy-item">Benchmarks & Goals <span class="new-section">Insights</span></td></tr>
+                            <tr><td class="new-item">Focus and Collaboration</td><td class="arrow">←</td><td class="legacy-item">Work Efficiency <span class="new-section">Insights</span></td></tr>
+                            <tr><td class="new-item">Benchmarks and Goals</td><td class="arrow">←</td><td class="legacy-item">Benchmarks and Goals <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Personal Insights</td><td class="arrow">←</td><td class="legacy-item">Personal Insights <span class="new-section">Insights</span></td></tr>
-                            <tr class="section-header"><td colspan="3">🔔 NOTIFICATIONS</td></tr>
+                            <tr class="section-header"><td colspan="3">NOTIFICATIONS</td></tr>
                             <tr><td class="new-item">Productivity Signals</td><td class="arrow">←</td><td class="legacy-item">Signals <span class="new-section">Main Menu</span></td></tr>
                             <tr><td class="new-item">Compliance Alarms - Alarm Analysis</td><td class="arrow">←</td><td class="legacy-item">Risk Level <span class="new-section">Alarms</span></td></tr>
                             <tr><td class="new-item">Compliance Alarms - Alarm Log</td><td class="arrow">←</td><td class="legacy-item">Alarm Log <span class="new-section">Alarms</span></td></tr>
@@ -525,11 +517,11 @@
                             <tr><td class="new-item">Compliance Alarms - Screenshot History</td><td class="arrow">←</td><td class="legacy-item">Screenshots <span class="new-section">Alarms</span></td></tr>
                             <tr><td class="new-item">Subscriptions</td><td class="arrow">←</td><td class="legacy-item">Subscriptions <span class="new-section">Insights</span></td></tr>
                             <tr><td class="new-item">Weekly Digest</td><td class="arrow">←</td><td class="legacy-item">Weekly Digest <span class="new-section">Access</span></td></tr>
-                            <tr class="section-header"><td colspan="3">🔗 APIs & INTEGRATIONS</td></tr>
-                            <tr><td class="new-item">APIs & Integrations</td><td class="arrow">←</td><td class="legacy-item">API & Integrations <span class="new-section">Main Menu</span></td></tr>
-                            <tr class="section-header"><td colspan="3">⚙️ SETTINGS</td></tr>
+                            <tr class="section-header"><td colspan="3">APIs AND INTEGRATIONS</td></tr>
+                            <tr><td class="new-item">APIs and Integrations</td><td class="arrow">←</td><td class="legacy-item">API and Integrations <span class="new-section">Main Menu</span></td></tr>
+                            <tr class="section-header"><td colspan="3">SETTINGS</td></tr>
                             <tr><td class="new-item">Settings</td><td class="arrow">←</td><td class="legacy-item">Settings</td></tr>
-                            <tr class="section-header"><td colspan="3">🔔 LATEST UPDATES & HELP</td></tr>
+                            <tr class="section-header"><td colspan="3">LATEST UPDATES AND HELP</td></tr>
                             <tr><td class="new-item">Latest Updates</td><td class="arrow">←</td><td class="legacy-item">Latest Updates</td></tr>
                             <tr><td class="new-item">Help</td><td class="arrow">←</td><td class="legacy-item">Help</td></tr>
                         </tbody>
@@ -553,68 +545,67 @@
             </div>
         </div>
 
-        <!-- Right Panel - New Navigation -->
         <div class="side-panel">
             <div class="side-panel-header">New Navigation</div>
             <div class="side-panel-content">
                 <div class="nav-preview">
                     <div class="nav-preview-logo">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#2ed4b5"/>
-                            <path d="M2 17l10 5 10-5" stroke="#1f9c89" stroke-width="2"/>
-                            <path d="M2 12l10 5 10-5" stroke="#2ed4b5" stroke-width="2"/>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#2ed4b5"></path>
+                            <path d="M2 17l10 5 10-5" stroke="#1f9c89" stroke-width="2"></path>
+                            <path d="M2 12l10 5 10-5" stroke="#2ed4b5" stroke-width="2"></path>
                         </svg>
                         <span>Activ<span class="trak">Trak</span></span>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg>
                         Home
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
                         Favorites
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M7 7h10M7 12h10M7 17h6"></path></svg>
                         Executive Summaries
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><circle cx="17" cy="7" r="4"/><path d="M21 21v-2a4 4 0 00-3-3.85"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="7" r="4"></circle><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"></path></svg>
                         Workforce Management
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                        Technology & AI Usage
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+                        Technology and AI Usage
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
                         Productivity Optimization
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"></path></svg>
                         Notifications
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
-                        APIs & Integrations
-                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>
+                        APIs and Integrations
+                        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
                         Settings
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>
                         Latest Updates
                     </div>
                     <div class="nav-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>
                         Help
                     </div>
                 </div>
@@ -622,27 +613,32 @@
         </div>
     </div>
 
-    <script>
-        const toggleSwitch = document.getElementById('toggleSwitch');
-        const legacyLabel = document.getElementById('legacyLabel');
-        const newLabel = document.getElementById('newLabel');
-        const legacyToNew = document.getElementById('legacyToNew');
-        const newToLegacy = document.getElementById('newToLegacy');
-        let isReversed = false;
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var toggleSwitch = document.getElementById('toggleSwitch');
+            var legacyLabel = document.getElementById('legacyLabel');
+            var newLabel = document.getElementById('newLabel');
+            var legacyToNew = document.getElementById('legacyToNew');
+            var newToLegacy = document.getElementById('newToLegacy');
+            var isReversed = false;
 
-        toggleSwitch.addEventListener('click', function() {
-            isReversed = !isReversed;
-            toggleSwitch.classList.toggle('reverse');
-            legacyLabel.classList.toggle('active');
-            newLabel.classList.toggle('active');
-
-            if (isReversed) {
-                legacyToNew.classList.remove('active');
-                newToLegacy.classList.add('active');
-            } else {
-                legacyToNew.classList.add('active');
-                newToLegacy.classList.remove('active');
-            }
+            toggleSwitch.addEventListener('click', function() {
+                isReversed = !isReversed;
+                
+                if (isReversed) {
+                    toggleSwitch.classList.add('reverse');
+                    legacyLabel.classList.remove('active');
+                    newLabel.classList.add('active');
+                    legacyToNew.classList.remove('active');
+                    newToLegacy.classList.add('active');
+                } else {
+                    toggleSwitch.classList.remove('reverse');
+                    legacyLabel.classList.add('active');
+                    newLabel.classList.remove('active');
+                    legacyToNew.classList.add('active');
+                    newToLegacy.classList.remove('active');
+                }
+            });
         });
     </script>
 </body>
